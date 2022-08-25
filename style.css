@@ -1,0 +1,254 @@
+/* Style reset */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video, button, input, select, textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    vertical-align: baseline;
+}
+
+/* General Style */
+:root {
+    --x-size: 1.5rem;
+    --normal-size: 1.4rem;
+    --primary-color: #f7f7f7;
+    --secondary-color: #1d693e;
+}
+
+@font-face {
+    font-family: Norsebold;
+    font-weight: normal;
+    font-style: normal;
+    src: url(./norse-bold.woff2) format('woff2');
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* First part: Logo & copyright */
+aside {
+    color: white;
+    height: 15vmax;
+    background: url(img/halie-west-unsplash.jpg) no-repeat 0% 0% / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    height: 11vmax;
+    flex-direction: row;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: rgb(36 36 36 / 46%);
+    justify-content: center;
+    width: 100%;
+}
+
+.logo-img {
+    /* height: 10vmax;*/
+    max-height: 100%;
+}
+
+.logo-text {
+    font-size: 4.5rem;
+    font-family: NorseBold, sans-serif;
+}
+
+.copyright {
+    font-size: 1rem;
+    bottom: 0;
+    position: absolute;
+    font-style: italic;
+}
+
+.copyright a:visited {
+    color: #ffebee;
+    font-weight: bold;
+}
+
+/* Second part: Paragraphs & form */
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-para {
+    padding: 15vmin 5vmin 5vmin;
+    background-color: var(--primary-color);
+}
+
+.first-para p,
+.title-form {
+    font-size: var(--x-size);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.first-para em {
+    font-style: italic;
+}
+
+.title-form {
+    margin-top: 2.5rem;
+    margin-left: 5vmin;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 2rem;
+    justify-content: center;
+}
+
+form > div {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form > div > label {
+    font-size: var(--normal-size);
+    color: #666666;
+    position: absolute;
+    left: 1.25rem;
+    transition: all 0.2s;
+}
+
+form input {
+    font-size: var(--normal-size);
+    flex: 1;
+    border: 1px solid #DDDDDD;
+    padding: 2.2rem 1.1rem 0.6rem;
+    border-radius: 2px;
+}
+
+form input:focus + label, form input:not(:placeholder-shown) + label {
+    bottom: 60%;
+    font-size: calc(var(--normal-size)/1.4);
+    font-weight: bold;
+    color: #555555;
+}
+
+form input:focus + label {
+    color: var(--secondary-color);
+}
+
+form input:focus-visible {
+    outline: 2px solid darkcyan;
+}
+
+form input[type="email"]:not(:placeholder-shown):invalid {
+    transition-delay: 15s;
+    outline: 2px solid darkred;
+}
+
+
+.form-bottom {
+    box-shadow: 0 4px 2px -2px inset #b8b8b8;
+    padding: 3rem 0 12vmax 25%;
+    background-color: var(--primary-color);
+}
+
+button {
+    width: 20rem;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 3px 2px 1px #333;
+    font-size: calc(var(--normal-size)*1.2);
+    margin: 1rem 0rem 2.5rem 0rem;
+}
+
+.log-in {
+    font-size: var(--normal-size);
+}
+
+.log-in a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Tablet version */
+@media only screen and (min-width: 641px) and (max-width: 960px) {
+    form > div {
+        margin: 1vh 25vw;
+    }
+
+    .copyright {
+        font-size: 1.2rem;
+    }
+
+    .form-bottom {
+        text-align: center;
+    }
+}
+
+/* Computer version */
+@media only screen and (min-width: 961px) {
+    :root {
+        --normal-size: 1.8rem;
+        --x-size: 2.4rem;
+    }
+
+    body {
+        flex-direction: row;
+    }
+
+    aside {
+        min-width: 33vmax;
+        height: initial;
+    }
+
+    .logo-wrapper {
+        height: 8vmax;
+        position: relative;
+        bottom: 35%;
+    }
+
+    .copyright {
+        bottom: 1rem;
+        font-size: small;
+    }
+
+    .logo-text {
+        font-size: 4.5vw;
+    }
+
+    .first-para p, .title-form {
+        width: 75%;
+    }
+
+    form {
+        flex-direction: row;
+    }
+
+    form > div {
+        width: 40%;
+        margin-right: 5%;
+    }
+
+}
