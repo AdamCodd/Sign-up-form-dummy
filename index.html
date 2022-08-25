@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Sign-up dummy</title>
 </head>
 
@@ -33,35 +34,40 @@
                 <form action="#" method="post">
                     <div>
                         <input type="text" id="fname" name="firstname" placeholder=" " autocapitalize="on"
-                            spellcheck="no" autocomplete="given-name" required>
+                            spellcheck="no" autocomplete="given-name" pattern="[A-Za-z]+" required>
                         <label for="fname">First name</label>
                     </div>
+                    <span data-type="firstname"></span>
                     <div>
                         <input type="text" id="lname" name="lastname" placeholder=" " autocapitalize="on"
-                            spellcheck="no" autocomplete="family-name" required>
+                            spellcheck="no" autocomplete="family-name" pattern="[A-Za-z]+" required>
                         <label for="lname">Last name</label>
                     </div>
-
+                    <span data-type="lastname"></span>
                     <div>
                         <input type="email" id="email" name="user_email" placeholder=" " spellcheck="no"
                             autocomplete="email" required>
                         <label for="email">Email</label>
                     </div>
+                    <span data-type="email"></span>
                     <div>
                         <input type="tel" id="phone" name="user_phone" placeholder=" " spellcheck="no"
                             autocomplete="tel" required>
                         <label for="phone">Phone number</label>
                     </div>
+                    <span data-type="phone"></span>
                     <div>
                         <input type="password" id="password" name="user_pass" placeholder=" " spellcheck="no"
                             autocomplete="new-password" required>
                         <label for="password">Password</label>
                     </div>
+                    <span data-type="newPassword"></span>
                     <div>
                         <input type="password" id="password-confirm" placeholder=" " name="user_pass_confirm"
                             spellcheck="no" autocomplete="off" required>
                         <label for="password-confirm">Confirm password</label>
                     </div>
+                    <span data-type="passwordConfirm"></span>
             </div>
             </form>
             <div class="form-bottom">
