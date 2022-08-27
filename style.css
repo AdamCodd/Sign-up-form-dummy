@@ -17,6 +17,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 :root {
     --x-size: 1.5rem;
     --normal-size: 1.4rem;
+    --mini-size: 1.3rem;
     --primary-color: #f7f7f7;
     --secondary-color: #1d693e;
 }
@@ -124,7 +125,6 @@ form > div {
     display: flex;
     position: relative;
     align-items: center;
-    margin-bottom: 20px;
 }
 
 form > div > label {
@@ -143,6 +143,12 @@ form input {
     border-radius: 2px;
 }
 
+label::after {
+    content: var(--content);
+    font-size: 1rem;
+    color: darkred;
+}
+
 form input:focus + label, form input:not(:placeholder-shown) + label {
     bottom: 60%;
     font-size: calc(var(--normal-size)/1.4);
@@ -158,11 +164,9 @@ form input:focus-visible {
     outline: 2px solid darkcyan;
 }
 
-form input[type="email"]:not(:placeholder-shown):invalid {
-    transition-delay: 15s;
-    outline: 2px solid darkred;
+span {
+    margin-bottom: 2rem;
 }
-
 
 .form-bottom {
     box-shadow: 0 4px 2px -2px inset #b8b8b8;
@@ -196,6 +200,27 @@ button:hover {
     color: var(--secondary-color);
     text-decoration: none;
     font-weight: bold;
+}
+
+.invalid, input:not(:placeholder-shown):invalid {
+    outline: 2px solid darkred;
+}
+
+.error {
+    color: #333;
+    font-size: var(--mini-size);
+    outline: 2px solid #d47824;
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-top: 2rem;
+}
+
+.error::before {
+    content: "⚠️";
+    /*content: attr(data-before);*/
+    font-size: var(--mini-size);
+    margin-left: .5rem;
+    margin-right: .5rem;
 }
 
 /* Tablet version */
