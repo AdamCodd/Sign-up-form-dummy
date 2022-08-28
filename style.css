@@ -118,7 +118,6 @@ form {
     flex-wrap: wrap;
     flex-direction: column;
     padding: 2rem;
-    justify-content: center;
 }
 
 form > div {
@@ -143,11 +142,10 @@ form input {
     border-radius: 2px;
 }
 
-label::after {
-    content: var(--content);
-    font-size: 1rem;
-    color: darkred;
+span {
+    margin-bottom: 2rem;
 }
+
 
 form input:focus + label, form input:not(:placeholder-shown) + label {
     bottom: 60%;
@@ -164,10 +162,6 @@ form input:focus-visible {
     outline: 2px solid darkcyan;
 }
 
-span {
-    margin-bottom: 2rem;
-}
-
 .form-bottom {
     box-shadow: 0 4px 2px -2px inset #b8b8b8;
     padding: 3rem 0 12vmax 25%;
@@ -178,7 +172,7 @@ button {
     width: 20rem;
     padding: 1.5rem;
     border-radius: 10px;
-    background-color: var(--secondary-color);
+    background-color: #596D48;
     color: white;
     font-weight: bold;
     box-shadow: 0px 3px 2px 1px #333;
@@ -188,7 +182,7 @@ button {
 }
 
 button:hover {
-    background-color: darkmagenta;
+    background-color: var(--secondary-color);
     box-shadow: 0px 1px 1px 2px #333;
 }
 
@@ -210,9 +204,9 @@ button:hover {
     color: #333;
     font-size: var(--mini-size);
     outline: 2px solid #d47824;
-    border-radius: 10px;
+    border-radius: 1rem;
     padding: 0.8rem;
-    margin-top: 2rem;
+    margin: 2rem auto;
 }
 
 .error::before {
@@ -226,11 +220,16 @@ button:hover {
 /* Tablet version */
 @media only screen and (min-width: 641px) and (max-width: 960px) {
     form > div {
-        margin: 1vh 25vw;
+        margin: .5vh 25vw;
     }
 
     .copyright {
         font-size: 1.2rem;
+    }
+
+    .error {
+        margin: 1vh 25vw;
+        display: block;
     }
 }
 
@@ -270,15 +269,21 @@ button:hover {
     }
 
     form {
-        flex-direction: row;
+        flex-direction: column;
     }
 
     form > div {
         width: 40%;
-        margin-right: 5%;
+        margin: 1rem auto;
     }
 
     .form-bottom {
         padding: 3rem 0 12vmax 40%;
+    }
+
+    .error {
+        width: 40%;
+        margin: .5rem auto 2rem;
+        display: block;
     }
 }
