@@ -17,7 +17,7 @@ function validate(input) {
         }
         if (inputType === 'tel') {
             regex = '^[0-9]{2}(?: |\.)?[0-9]{2}(?: |\.)?[0-9]{2}(?: |\.)?[0-9]{2}(?: |\.)?[0-9]{2}$';
-            textError = "You need to format your phone like this: XX XX XX XX XX";
+            textError = "You need to format your phone number like this: XX XX XX XX XX";
         }
 
         if (userInput.match(regex) === null) {
