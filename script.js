@@ -1,14 +1,13 @@
 const allinputs = document.querySelectorAll('input');
+const passwordInput = document.querySelector('#password');
 
 function validate(input) {
     let inputType = input.getAttribute('type');
     let alert = input.closest('div').nextElementSibling;
-    let userInput;
-    let textError;
-    let regex;
+    let userInput, textError, regex;
     return function (e) {
         userInput = e.target.value;
-        if (inputType === 'text') {
+        if (inputType === 'text' && (e.target.id === "fname" || e.target.id === "lname")) {
             regex = '^[-a-zA-Z]+$';
             textError = "You need to enter a correct name."
         }
@@ -31,8 +30,6 @@ function validate(input) {
         if (inputType === 'password' && e.target.id === 'password-confirm') {
             const passfield = document.querySelector('#password').value;
             const passconfirm = document.querySelector('#password-confirm').value;
-            console.log("password: ", passfield);
-            console.log("password confirmation:", passconfirm);
 
             if (passfield !== passconfirm) {
                 textError = '<span style="color:darkred;">Please make sure your passwords match.</span>';
@@ -44,17 +41,16 @@ function validate(input) {
     }
 }
 
-
-function recheck(input) {
+function checkPassOnType(input) {
     let userInput;
     let inputType = input.getAttribute('type');
     return function (e) {
         userInput = e.target.value;
         let alert = input.closest('div').nextElementSibling;
         if (inputType === 'password' && e.target.id === 'password' && e.target.value.length > 0) {
-            let nChars, number, nUpper, nLower, nSpecial, notAllowed;
+            let nChars, number, nUpper, nLower, nSpecial;
+            let notAllowed = false;
             nChars = number = nUpper = nLower = nSpecial = 'darkred';
-            notAllowed = false;
 
             if (userInput.match('.{8,}') !== null) {
                 nChars = 'darkgreen';
@@ -83,27 +79,41 @@ function recheck(input) {
             alert.classList.add('error');
             alert.innerHTML = textError;
 
-            if (nChars === "darkgreen" && number === "darkgreen" && nUpper === "darkgreen" && nLower === "darkgreen" && nSpecial === "darkgreen" && notAllowed === false) {
+            if (nChars === "darkgreen" &&
+                number === "darkgreen" &&
+                nUpper === "darkgreen" &&
+                nLower === "darkgreen" &&
+                nSpecial === "darkgreen" &&
+                notAllowed === false) {
+
                 input.classList.remove('invalid');
                 alert.classList.remove('error');
                 alert.textContent = "";
+
             }
-        }
-        else {
-            input.classList.remove('invalid');
-            alert.classList.remove('error');
-            alert.textContent = "";
         }
     }
 }
 
+const main = document.querySelector('main');
+const labelRequired = document.createElement("style");
+labelRequired.innerHTML = '';
 allinputs.forEach(input => {
     if (input.getAttribute('required') !== null) {
-        document.querySelectorAll(`label[for=${input.id}`)[0].style.setProperty("--content", '*');
+        labelRequired.innerHTML += `#${input.id} + label::after {content: "*"; font-size: 1rem; color: darkred;} `;
     }
     input.addEventListener('change', validate(input));
 });
+main.appendChild(labelRequired);
 
+// Remove error hint on input
 allinputs.forEach(input => {
-    input.addEventListener('input', recheck(input));
-})
+    input.addEventListener('input', () => {
+        let alert = input.closest('div').nextElementSibling;
+        input.classList.remove('invalid');
+        alert.classList.remove('error');
+        alert.textContent = "";
+    });
+});
+
+passwordInput.addEventListener('input', checkPassOnType(passwordInput));
