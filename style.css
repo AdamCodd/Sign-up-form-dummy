@@ -203,7 +203,7 @@ button:hover {
 .error {
     color: #333;
     font-size: var(--mini-size);
-    outline: 2px solid #d47824;
+    border: 2px solid #d47824;
     border-radius: 1rem;
     padding: 0.8rem;
     margin: 2rem auto;
@@ -211,7 +211,6 @@ button:hover {
 
 .error::before {
     content: "⚠️";
-    /*content: attr(data-before);*/
     font-size: var(--mini-size);
     margin-left: .5rem;
     margin-right: .5rem;
