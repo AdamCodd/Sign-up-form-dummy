@@ -100,7 +100,7 @@ const labelRequired = document.createElement("style");
 labelRequired.innerHTML = '';
 allinputs.forEach(input => {
     if (input.getAttribute('required') !== null) {
-        labelRequired.innerHTML += `#${input.id} + label::after {content: "*"; font-size: 1rem; color: darkred;} `;
+        labelRequired.innerHTML += `#${input.id} + label::after {content: "*"; font-size: 1.6rem; color: darkred;} `;
     }
     input.addEventListener('change', validate(input));
 });
